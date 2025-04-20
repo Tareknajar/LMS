@@ -17,6 +17,8 @@ class student extends Authenticatable implements JWTSubject
         'addres',
         'date_on_brith',
         'gender',
+        'email',
+        'password',
     ];
     public function education_record(){
         return $this->hasMany(education_record::class);

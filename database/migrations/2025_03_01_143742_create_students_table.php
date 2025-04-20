@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('first_name')->index();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('last_name')->index();
             $table->string('father_name')->index();
             $table->string('addres');

@@ -3,11 +3,12 @@
 namespace App\Services;
 use illuminate\Support\Str;
 use App\Models\student;
-
+use Illuminate\Support\Facades\Hash;
 class Studentservice{
     
     public function storestudent($data){
         $data['uuid']=Str::uuid();
+        $data['password']=Hash::make($data['password']);
          student::create($data);
     }
     public function updatestudent($uuid,$data){

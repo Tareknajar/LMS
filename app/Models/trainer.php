@@ -12,7 +12,9 @@ class trainer extends Authenticatable implements JWTSubject
            'first_name',
            'last_name',
            'experiens_year',
-           'cv'
+           'cv',
+           'email',
+           'password'
     ];
     public function track(){
         return $this->hasMany(track::class);

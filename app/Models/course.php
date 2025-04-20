@@ -13,8 +13,7 @@ class course extends Model
         	'lecture_number',
         	'lecture_date',
         	'track_session_id',
-        	'type',
-        	'pathe',
+
 
     ];
     public function track_session(){
@@ -23,4 +22,5 @@ class course extends Model
 	public function electronic_courses(){
         return $this->hasMany(electronic_courses::class);
     }
+
 }

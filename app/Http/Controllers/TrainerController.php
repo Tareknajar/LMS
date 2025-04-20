@@ -8,6 +8,7 @@ use App\Services\trainer_service;
 use Illuminate\Http\Request;
 use App\Http\traits\GeneralTrait;
 use App\Http\traits\Uploadfile;
+use Illuminate\Support\Facades\Storage;
 
 class TrainerController extends Controller
 {
@@ -38,13 +39,40 @@ class TrainerController extends Controller
         $this->trainer_service->updatetrainer($uuid,$trainer);
         return $this->apiResponse('successfull');
     }
+
     public function destore($uuid){
         $deleted=$this->trainer_service->destoretrainer($uuid);
         return $this->apiResponse('deleted');
     }
+ 
     public function index(){
         $trainers=$this->trainer_service->indextrainer();
         $trainer=trainer_Resource::collection($trainers);
         return $this->apiResponse($trainer);
-    }
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
