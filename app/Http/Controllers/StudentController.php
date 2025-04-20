@@ -22,6 +22,7 @@ class StudentController extends Controller
         $validate=$request->validated();
         $this->studentservice->storestudent($validate);
         return $this->apiResponse('successfull'); 
+
     }
     public function update(StoreStudent $request,$uuid){
         $validate=$request->validated();

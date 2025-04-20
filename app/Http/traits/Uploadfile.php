@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Traits;
 
+use Illuminate\Support\Facades\Storage;
 
 trait Uploadfile{
 
@@ -14,7 +15,12 @@ trait Uploadfile{
         }
         return null; 
     }
-
+    public function deletefile($user,$attribute,$disk){
+             $user->$attribute && Storage::disk($disk)->exists($user->$attribute);
+                Storage::disk($disk)->delete($user->$attribute);
+            
+            return 'success';
+         }
 }
 
 

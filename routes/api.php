@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CretoficateController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EducationRecordController;
 use App\Http\Controllers\ElectronicCoursesController;
 use App\Http\Controllers\SpecializationController;
@@ -13,13 +14,19 @@ use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\UniversityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
+Route::post('/login/{role}', [AuthController::class, 'login']);
 
 Route::post('store_student',[StudentController::class,'store']);
+Route::post('store_trainer',[TrainerController::class,'store']);
+Route::post('store_user',[UserController::class,'store']);
+
+
+//Route::middleware('auth:api,trainer,student')->group(function(){
+    
+Route::post('/logout/{role}', [AuthController::class, 'logout']);
+
 Route::post('update_student/{uuid}',[StudentController::class,'update']);
 Route::get('destore_student/{uuid}',[StudentController::class,'destore']);
 Route::get('index_student',[StudentController::class,'index']);
@@ -39,7 +46,6 @@ Route::post('update_education_record/{uuid}',[EducationRecordController::class,'
 Route::get('destore_education_record/{uuid}',[EducationRecordController::class,'destore']);
 Route::get('index_education_record',[EducationRecordController::class,'index']);
 
-Route::post('store_trainer',[TrainerController::class,'store']);
 Route::post('update_trainer/{uuid}',[TrainerController::class,'update']);
 Route::get('destore_trainer/{uuid}',[TrainerController::class,'destore']);
 Route::get('index_trainer',[TrainerController::class,'index']);
@@ -69,7 +75,11 @@ Route::post('update_cretoficate/{uuid}',[CretoficateController::class,'update'])
 Route::get('destore_cretoficate/{uuid}',[CretoficateController::class,'destore']);
 Route::get('index_cretoficate',[CretoficateController::class,'index']);
 
+Route::post('update_user/{uuid}',[UserController::class,'update']);
+Route::get('destore_user/{uuid}',[UserController::class,'destore']);
+Route::get('index_user',[UserController::class,'index']);
 
+//});
 
 
 

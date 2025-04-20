@@ -36,17 +36,18 @@ return [
     */
 
     'guards' => [
-        'User' => [
+
+        'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
         'trainer' => [
             'driver' => 'jwt',
-            'provider' => 'users',
+            'provider' => 'trainers',
         ],
         'student' => [
             'driver' => 'jwt',
-            'provider' => 'users',
+            'provider' => 'students',
         ],
     ],
 
@@ -70,15 +71,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
-        'trainer' => [
+        'trainers' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\trainer::class),
+            'model' => App\Models\trainer::class,
         ],
-        'student' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\student::class),
+            'model' => App\Models\student::class,
         ],
 
         // 'users' => [

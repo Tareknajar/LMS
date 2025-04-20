@@ -33,13 +33,10 @@ class ElectronicCoursesController extends Controller
     }
     public function update($uuid,Store_electronic_courses $request ){
         $electronic_courses_service=$request->validated();
-
         $file_Path_pdf = $this->upload($request,'pdf','pdfs');
         $electronic_courses_service['pdf'] = $file_Path_pdf;
-
         $file_Path_video = $this->upload($request,'video','videos');
         $electronic_courses_service['video'] = $file_Path_video;
-
         $this->electronic_courses_service->update_electronic_courses($uuid,$electronic_courses_service);
         return $this->apiResponse('successfull');
     }
