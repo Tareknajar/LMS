@@ -71,11 +71,13 @@ Route::middleware('auth:trainer')->group(function(){
     Route::put('update_user/{uuid}',[UserController::class,'update']);
     Route::delete('destore_user/{uuid}',[UserController::class,'destore']);
     Route::get('index_user',[UserController::class,'index']);
+    Route::get('searsh_user',[StudentController::class,'searsh']);
+    Route::get('searsh_trainer',[TrainerController::class,'searsh']);
 
 });
 
 
-Route::get('searsh_user',[StudentController::class,'searsh']);
+
 
 
 
