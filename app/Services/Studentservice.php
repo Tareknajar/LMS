@@ -26,6 +26,12 @@ class Studentservice{
         $student=student::all();
         return $student;
     }
+    public function searchstudent($requste){
+        $search=student::where('last_name','like',"%{$requste->last_name}%")
+        ->orWhere('first_name','like',"%{$requste->first_name}%")
+        ->get();
+        return $search;
+    }
         
  
 }

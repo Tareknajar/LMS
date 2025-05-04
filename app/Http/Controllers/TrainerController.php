@@ -51,6 +51,12 @@ class TrainerController extends Controller
         return $this->apiResponse($trainer);
    }
 
+   public function searsh(Request $request){
+    $searshtrainer=$this->trainer_service->searchtrainer($request);
+    $searsh=trainer_Resource::collection($searshtrainer);
+    return $this->apiResponse($searsh);
+}
+
 
 
 

@@ -29,6 +29,12 @@ class trainer_service{
         $trainer=trainer::all();
         return $trainer;
     }
+    public function searchtrainer($requste){
+        $search=trainer::where('last_name','like',"%{$requste->last_name}%")
+        ->orWhere('first_name','like',"%{$requste->first_name}%")
+        ->get();
+        return $search;
+    }
 
 
 }?>
