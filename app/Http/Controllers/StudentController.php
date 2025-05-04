@@ -38,6 +38,13 @@ class StudentController extends Controller
         $students=Student_Resource::collection($student);
         return $this->apiResponse($students);
     }
+    public function searsh(Request $request){
+        $searshtrainer=$this->studentservice->searchstudent($request);
+        $searsh=Student_Resource::collection($searshtrainer);
+        return $this->apiResponse($searsh);
+    }
+
+
 
 
 
